@@ -1,0 +1,17 @@
+steps:
+  # Docker Build
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t',
+           'us-central1-docker.pkg.dev/$PROJECT_ID/fadil-101000478/assignment2:${SHORT_SHA}',
+           '.']
+
+  # Docker Push
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push',
+           'us-central1-docker.pkg.dev/$PROJECT_ID/fadil-101000478/assignment2:${SHORT_SHA}']
+
+images:
+  - 'us-central1-docker.pkg.dev/$PROJECT_ID/fadil-101000478/assignment2:${SHORT_SHA}'
+
+options:
+  defaultLogsBucketBehavior: REGIONAL_USER_OWNED_BUCKET
